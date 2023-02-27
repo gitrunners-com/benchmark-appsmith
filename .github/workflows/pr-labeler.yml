@@ -1,15 +1,13 @@
 name: Label PRs based on title
 
 on:
-  pull_request:
-    branches: [release]
-    types: [opened, reopened, edited]
+  workflow_dispatch: {}
 
 jobs:
   build:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: appsmithorg/labeler@master
-        env:
-          GITHUB_TOKEN: "${{ secrets.GITHUB_TOKEN }}"
+    - uses: appsmithorg/labeler@master
+      env:
+        GITHUB_TOKEN: "${{ secrets.GITHUB_TOKEN }}"

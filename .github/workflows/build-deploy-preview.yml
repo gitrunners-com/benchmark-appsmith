@@ -2,8 +2,7 @@
 name: Build Deploy Preview
 
 on:
-  issue_comment:
-    types: [created]
+  workflow_dispatch: {}
 
 jobs:
   build-deploy-preview:
@@ -13,10 +12,10 @@ jobs:
       github.event.issue.pull_request
     steps:
 
-      - name: Slash Command Dispatch
-        uses: peter-evans/slash-command-dispatch@v3
-        with:
-          issue-type: pull-request
-          token: ${{ secrets.APPSMITH_DEPLOY_PREVIEW_PAT }}
-          commands: |
-            build-deploy-preview
+    - name: Slash Command Dispatch
+      uses: peter-evans/slash-command-dispatch@v3
+      with:
+        issue-type: pull-request
+        token: ${{ secrets.APPSMITH_DEPLOY_PREVIEW_PAT }}
+        commands: |
+          build-deploy-preview

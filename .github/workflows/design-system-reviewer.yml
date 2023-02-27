@@ -1,9 +1,7 @@
 name: Add Design System Pod teammates as reviewers
 
 on:
-  pull_request:
-    branches: [release]
-    types: [opened, reopened, edited]
+  workflow_dispatch: {}
 
 # Change the working directory for all the jobs in this workflow
 defaults:
@@ -15,8 +13,9 @@ jobs:
     name: Auto Request Review
     runs-on: ubuntu-latest
     steps:
-      - name: Request review based on files changes and/or groups the author belongs to
-        uses: necojackarc/auto-request-review@v0.7.0
-        with:
-          token: ${{ secrets.GITHUB_TOKEN }}
-          config: .github/reviewers.yml # Config file location override
+    - name: Request review based on files changes and/or groups the author belongs
+        to
+      uses: necojackarc/auto-request-review@v0.7.0
+      with:
+        token: ${{ secrets.GITHUB_TOKEN }}
+        config: .github/reviewers.yml   # Config file location override
